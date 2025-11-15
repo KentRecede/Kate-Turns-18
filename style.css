@@ -2,6 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Fleur+De+Leah&family=Lovers+Quarrel&family=Pinyon+Script&family=Quintessential&display=swap');
 
+h1 {
+    font-size: 48px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+}
+
 
 
 
@@ -152,10 +168,10 @@ body{
 .roses h1,
 .bluebills h1 {
     font-family: Windsong;
-    font-size: 50px;
+    font-size: clamp(40px, 6vw, 100px); /* scales with screen */
     color: rgba(255, 255, 0, 0.9);
-    
     animation: glowPulse 2.5s ease-in-out infinite;
+    text-align: center;
 }
 
 /* Glowing animation */
@@ -197,11 +213,13 @@ body{
 .bluebillsbox li,
 .rosesbox li,
 .candlebox li {
-    margin-bottom: 0px;
-    font-size: 1rem;
-    color: rgba(255, 255, 0, 0.664); /* or a color that matches your theme */
-    font-family: quintessential;
+    font-family: Quintessential, serif;
+    font-size: clamp(18px, 2.5vw, 28px); /* scales with screen */
+    color: rgba(255, 255, 0, 0.85);
+    margin-bottom: 4px;
+    text-align: center;
 }
+
 
 .music-btn {
     background: none;
