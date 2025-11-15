@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Fleur+De+Leah&family=Lovers+Quarrel&family=Pinyon+Script&family=Quintessential&display=swap');
 
-h1 {
+/* h1 {
     font-size: 48px;
 }
 
@@ -16,7 +16,7 @@ h1 {
     h1 {
         font-size: 28px;
     }
-}
+} */
 
 
 
@@ -168,7 +168,7 @@ body{
 .roses h1,
 .bluebills h1 {
     font-family: Windsong;
-    font-size: clamp(40px, 6vw, 100px); /* scales with screen */
+    /*font-size: clamp(40px, 6vw, 100px); /* scales with screen */
     color: rgba(255, 255, 0, 0.9);
     animation: glowPulse 2.5s ease-in-out infinite;
     text-align: center;
@@ -214,7 +214,7 @@ body{
 .rosesbox li,
 .candlebox li {
     font-family: Quintessential, serif;
-    font-size: clamp(18px, 2.5vw, 28px); /* scales with screen */
+    /*font-size: clamp(18px, 2.5vw, 28px); /* scales with screen */
     color: rgba(255, 255, 0, 0.85);
     margin-bottom: 4px;
     text-align: center;
