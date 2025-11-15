@@ -240,6 +240,93 @@ playBtn.addEventListener("click", () => {
         updateCarousel();
     });
 
+  const lanterns = document.querySelectorAll('.lantern');
+
+lanterns.forEach(lantern => {
+    // Random initial position and speed
+    let topPos = window.innerHeight + Math.random() * 200; 
+    let leftPos = Math.random() * (window.innerWidth - 60);
+    let speed = Math.random() * 0.2 + 0.1; // slower float
+
+
+    lantern.style.top = topPos + 'px';
+    lantern.style.left = leftPos + 'px';
+
+    // Dragging variables
+    lantern.isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    // Floating function
+    function float() {
+        if (!lantern.isDragging) {
+            topPos -= speed;
+            if (topPos < -100) {
+                topPos = window.innerHeight + 50;
+                leftPos = Math.random() * (window.innerWidth - 60);
+                lantern.style.left = leftPos + 'px';
+            }
+            lantern.style.top = topPos + 'px';
+        }
+        requestAnimationFrame(float);
+    }
+    float();
+
+    // Mouse dragging
+    lantern.addEventListener('mousedown', e => {
+        lantern.isDragging = true;
+        offsetX = e.clientX - lantern.getBoundingClientRect().left;
+        offsetY = e.clientY - lantern.getBoundingClientRect().top;
+        lantern.style.cursor = 'grabbing';
+        lantern.style.zIndex = 10;
+    });
+
+    document.addEventListener('mousemove', e => {
+        if (lantern.isDragging) {
+            lantern.style.left = e.clientX - offsetX + 'px';
+            lantern.style.top = e.clientY - offsetY + 'px';
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (lantern.isDragging) {
+            lantern.isDragging = false;
+            lantern.style.cursor = 'grab';
+            lantern.style.zIndex = 0;
+            topPos = parseFloat(lantern.style.top);
+            leftPos = parseFloat(lantern.style.left);
+        }
+    });
+
+    // Touch support
+    lantern.addEventListener('touchstart', e => {
+        lantern.isDragging = true;
+        const touch = e.touches[0];
+        offsetX = touch.clientX - lantern.getBoundingClientRect().left;
+        offsetY = touch.clientY - lantern.getBoundingClientRect().top;
+        lantern.style.zIndex = 10;
+    });
+
+    document.addEventListener('touchmove', e => {
+        if (lantern.isDragging) {
+            const touch = e.touches[0];
+            lantern.style.left = touch.clientX - offsetX + 'px';
+            lantern.style.top = touch.clientY - offsetY + 'px';
+        }
+    });
+
+    document.addEventListener('touchend', () => {
+        if (lantern.isDragging) {
+            lantern.isDragging = false;
+            lantern.style.zIndex = 0;
+            topPos = parseFloat(lantern.style.top);
+            leftPos = parseFloat(lantern.style.left);
+        }
+    });
+});
+
+
+
 </script>
 
 </body>
